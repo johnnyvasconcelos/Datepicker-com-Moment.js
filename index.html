@@ -93,9 +93,8 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
      <script src="scripts/calendar.js"></script>
      <script>
-
-       class Calendar {
-    constructor(id) {
+      class Calendar {
+      constructor(id) {
       this.cells = []
       this.currentMonth = moment()
         this.elCalendar = document.getElementById(id)
@@ -106,18 +105,14 @@
         this.elMonth = document.querySelector('.month')
         this.showCells()
     }
-
     showTemplate() {
       this.elCalendar.innerHTML = this.getTemplate()
       this.addEventListenerToControls()
     }
-
     getTemplate() {
       let template = ``
       return template
     }
-    
-
     addEventListenerToControls() {
       let elControls = document.querySelectorAll('.fa-caret')
       elControls.forEach(elControl => {
@@ -133,7 +128,6 @@
         })
       })
     } 
-
     changeMonth(next = true) {
       if (next) {
         this.currentMonth.add(1, 'months');
@@ -141,19 +135,16 @@
         this.currentMonth.subtract(1, 'months');
       }
     }
-
     showCells() {
       this.cells = this.generateDates(this.currentMonth)
       if (this.cells === null) {
         console.error('Unable to generate calendar days.')
         return
       }
-
       this.elGridBody.innerHTML = ``
       this.elMonthName.innerHTML = this.currentMonth.format('MMMM YYYY')
       // this.elDay.innerHTML = this.currentMonth.format('DD')
       this.elMonth.innerHTML = this.currentMonth.format('MMM YYYY')
-
       let templateCells = ''
       let disabledClass = ''
       for (let i = 0; i < this.cells.length; i++) {
@@ -170,7 +161,6 @@
       this.elGridBody.innerHTML = templateCells
       this.addEventListenerToCells()
     }
-
     generateDates(monthToShow = moment()) {
       if (!moment.isMoment(monthToShow)) {
         return null;
@@ -178,18 +168,14 @@
       let dateStart = moment(monthToShow).startOf('month')
       let dateEnd = moment(monthToShow).endOf('month')
       let cells = []
-
-      
      // find the first day of the calendar
       while(dateStart.day() !== 0) {
         dateStart.subtract(1, 'days')
       }
-
       // find the last day of the calendar
       while(dateEnd.day() !== 6) {
         dateEnd.add(1, 'days')
       }
-
       // generate calendar days
       do {
         cells.push({
@@ -200,7 +186,6 @@
       } while (dateStart.isSameOrBefore(dateEnd))
       return cells
     }
-
     addEventListenerToCells() {
       let elCells = this.elCalendar.querySelectorAll('.normal')
       elCells.forEach(elCell => {
@@ -220,9 +205,7 @@
       })
     }
 }
-
 let calendar = new Calendar('days')
-
      </script>
 </body>
 </html>
