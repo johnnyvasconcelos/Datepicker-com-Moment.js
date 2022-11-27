@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- estilo -->
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <!-- bootstrap 5 css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- scripts -->
+    <script src="./assets/scripts/script.js" defer></script>
+    <!-- bootstrap 5 javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous" defer></script>
+    <!-- date picker: https://github.com/twbs/bootstrap/graphs/contributors -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous" defer></script>
+    <title>Selecionador de Data + Calendário</title>
+</head>
+<body>
+    <!-- selecionador de data -->
+    <section class="date-picker-area">
+        <hgroup>
+            <h1>Selecione:</h1>
+            <p>Date Picker</p>
+        </hgroup>
+         <!-- Bookings -->
+         <section class="bookings bookings-background" id="bookings">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <ul class="count bookings-count d-flex mx-auto w-100 justify-content-end">
+                  <li class="text-center"><div class="number"><a href="bookings.html" class="active">1</a></div><span><a href="#"><nobr>Choose Your Date</nobr></a></span></li>
+                  <li class="text-center"><div class="number"><a href="add-ons.html">2</a></div><span><a href="#"><nobr>Choose Your Cruise</nobr></a></span></li>
+                  <li class="text-center"><div class="number"><a href="payment.html">3</a></div><span><a href="#"><nobr>Place Your Reservation</nobr></a></span></li>
+                  <li class="text-center"><div class="number"><a href="complete.html">4</a></div><span><a href="#">Confirmation</a></span></li>
+                </ul>
+                <ul class="count-mobile bookings-count-mobile">
+                  <li class="text-center"><div class="number"><a href="bookings.html" class="active">1</a></div><span><a href="#">Choose Your Date</a></span></li>
+                  <li class="text-center"><div class="number"><a href="add-ons.html">2</a></div><span><a href="#">Choose Your Cruise</a></span></li>
+                  <li class="text-center"><div class="number"><a href="payment.html">3</a></div><span><a href="#">Place Your Reservation</a></span></li>
+                  <li class="text-center"><div class="number"><a href="complete.html">4</a></div><span><a href="#">Confirmation</a></span></li>
+                </ul>
+                  <div class="check bookings-check mt-5 d-flex justify-content-center align-items-center">
+                    <form action="" class="w-100 d-flex justify-content-between position-relative align-items-center">
+                      <label for="date"><nobr>Please Select Date Of Cruise :</nobr></label>
+                      <!-- date picker -->
+                      <section class="date-picker-button d-flex justify-content-between align-items-center" id="date">
+                        <nobr><span class="dayNow"> </span> <span class="month" id="month-now">month</span><!--<span class="year">2021</span>--></nobr><i class="mt-1 far fa-calendar-alt"></i>
+                        <!-- inputs -->
+                        <!-- Get Day Value -->
+                        <input type="text" name="day" id="day" style="display:none!important" value="calc day">
+                        <!-- Get Month & Year Value -->
+                        <input type="text" name="month-year" id="month-year" style="display:none!important" value="calc month">
+                        <!-- / inputs -->
+                      </section>
+                         <!-- Calendar -->
+                         <div class="date-picker position-absolute" id="datepicker">
+                          <div class="month d-flex justify-content-between align-items-center">
+                            <div class="arrows prev-mth prev"><i class="fas fa-caret-left fa-caret"></i></div>
+                            <div class="mth"><span class="calendar-month" style="color: #333;">March</span> <span class="calendar-year">2021</span></div>
+                            <div class="arrows next-mth next"><i class="fas fa-caret-right fa-caret"></i></div>
+                          </div>
+                          <div class="week d-flex justify-content-between">
+                            <span>Su</span>
+                            <span>Mo</span>
+                            <span>Tu</span>
+                            <span>We</span>
+                            <span>Th</span>
+                            <span>Fr</span>
+                            <span>Sa</span>
+                          </div>
+                          <div class="days" id="days">
+                            <!-- Area that generates the days by javascript -->
+                          </div>
+                        </div>
+                        <button class="check-btn desktop-button">Check Availability</button>
+                        <button class="check-btn mobile-button">Check Availability</button>
+                        <span class="d-block position-absolute under-text mt-3"></span>
+                    </form>
+                  </div>
+                  <div class="links d-flex justify-content-end">
+                    <div class="prev-link link"><a href="#"><i class="fa fa-angle-double-left"></i> Check Previous Day</a></div>
+                    <div class="next-link link"><a href="#">Check Next Day <i class="fa fa-angle-double-right"></i></a></div>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+        </section>
+    </section>
+     <!-- Calendar -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+     <script src="scripts/calendar.js"></script>
+     <script>
+
+       class Calendar {
+    constructor(id) {
+      this.cells = []
+      this.currentMonth = moment()
+        this.elCalendar = document.getElementById(id)
+        this.showTemplate()
+        this.elGridBody = document.querySelector('.days')
+        // this.elMonth = document.querySelector('.dayNow')
+        this.elMonthName = document.querySelector('.mth')
+        this.elMonth = document.querySelector('.month')
+        this.showCells()
+    }
+
+    showTemplate() {
+      this.elCalendar.innerHTML = this.getTemplate()
+      this.addEventListenerToControls()
+    }
+
+    getTemplate() {
+      let template = ``
+      return template
+    }
+    
+
+    addEventListenerToControls() {
+      let elControls = document.querySelectorAll('.fa-caret')
+      elControls.forEach(elControl => {
+        elControl.addEventListener('click', e => {
+          let elTarget = e.target
+          // let next = false
+          if (elTarget.classList.contains('fa-caret-left')) {
+            this.changeMonth(false)
+          } else {
+            this.changeMonth(true)
+          }
+          this.showCells();
+        })
+      })
+    } 
+
+    changeMonth(next = true) {
+      if (next) {
+        this.currentMonth.add(1, 'months');
+      } else {
+        this.currentMonth.subtract(1, 'months');
+      }
+    }
+
+    showCells() {
+      this.cells = this.generateDates(this.currentMonth)
+      if (this.cells === null) {
+        console.error('Unable to generate calendar days.')
+        return
+      }
+
+      this.elGridBody.innerHTML = ``
+      this.elMonthName.innerHTML = this.currentMonth.format('MMMM YYYY')
+      // this.elDay.innerHTML = this.currentMonth.format('DD')
+      this.elMonth.innerHTML = this.currentMonth.format('MMM YYYY')
+
+      let templateCells = ''
+      let disabledClass = ''
+      for (let i = 0; i < this.cells.length; i++) {
+        disabledClass = ''
+        if (!this.cells[i].isInCurrentMonth) {
+          disabledClass = 'prev-date'
+        } else {
+          disabledClass = 'normal'
+        }
+        templateCells += `
+        <div class="day normal-day ${disabledClass}"><span>${this.cells[i].date.date()}</span></div>
+        `
+      }
+      this.elGridBody.innerHTML = templateCells
+      this.addEventListenerToCells()
+    }
+
+    generateDates(monthToShow = moment()) {
+      if (!moment.isMoment(monthToShow)) {
+        return null;
+      }
+      let dateStart = moment(monthToShow).startOf('month')
+      let dateEnd = moment(monthToShow).endOf('month')
+      let cells = []
+
+      
+     // find the first day of the calendar
+      while(dateStart.day() !== 0) {
+        dateStart.subtract(1, 'days')
+      }
+
+      // find the last day of the calendar
+      while(dateEnd.day() !== 6) {
+        dateEnd.add(1, 'days')
+      }
+
+      // generate calendar days
+      do {
+        cells.push({
+          date: moment(dateStart),
+          isInCurrentMonth: dateStart.month() === monthToShow.month()
+        })
+        dateStart.add(1, 'days')
+      } while (dateStart.isSameOrBefore(dateEnd))
+      return cells
+    }
+
+    addEventListenerToCells() {
+      let elCells = this.elCalendar.querySelectorAll('.normal')
+      elCells.forEach(elCell => {
+        elCell.addEventListener('click', e => {
+          let elTarget = e.target
+          elTarget.classList.add('today')
+          let dayNow = document.querySelector('.dayNow')
+          let dayInput = document.querySelector('#day')
+          let monthYearInput = document.querySelector('#month-year')
+          let monthNow = document.querySelector('#month-now')
+          dayNow.innerHTML = elTarget.textContent
+          dayInput.value = dayNow.textContent
+          monthYearInput.value = dayNow.textContent + ' ' + monthNow.textContent
+          let datePicker = document.querySelector('.date-picker')
+          datePicker.classList.remove('show')
+        })
+      })
+    }
+}
+
+let calendar = new Calendar('days')
+
+     </script>
+</body>
+</html>
