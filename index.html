@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="eng">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,57 +8,46 @@
     <link rel="stylesheet" href="./assets/style/style.css">
     <!-- bootstrap 5 css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- box icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- scripts -->
     <script src="./assets/scripts/script.js" defer></script>
     <!-- bootstrap 5 javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous" defer></script>
     <!-- date picker: https://github.com/twbs/bootstrap/graphs/contributors -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous" defer></script>
-    <title>Selecionador de Data + Calendário</title>
+    <title>Date Picker + Calendar</title>
 </head>
 <body>
-    <!-- selecionador de data -->
+    <!-- date picker + calendar -->
     <section class="date-picker-area">
-        <hgroup>
-            <h1>Selecione:</h1>
-            <p>Date Picker</p>
-        </hgroup>
+      <header>
+            <h1>Date Picker with Moment.js, HTML, CSS & BootStrap 5.</h1>
+          </header>
          <!-- Bookings -->
          <section class="bookings bookings-background" id="bookings">
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-12">
-                <ul class="count bookings-count d-flex mx-auto w-100 justify-content-end">
-                  <li class="text-center"><div class="number"><a href="bookings.html" class="active">1</a></div><span><a href="#"><nobr>Choose Your Date</nobr></a></span></li>
-                  <li class="text-center"><div class="number"><a href="add-ons.html">2</a></div><span><a href="#"><nobr>Choose Your Cruise</nobr></a></span></li>
-                  <li class="text-center"><div class="number"><a href="payment.html">3</a></div><span><a href="#"><nobr>Place Your Reservation</nobr></a></span></li>
-                  <li class="text-center"><div class="number"><a href="complete.html">4</a></div><span><a href="#">Confirmation</a></span></li>
-                </ul>
-                <ul class="count-mobile bookings-count-mobile">
-                  <li class="text-center"><div class="number"><a href="bookings.html" class="active">1</a></div><span><a href="#">Choose Your Date</a></span></li>
-                  <li class="text-center"><div class="number"><a href="add-ons.html">2</a></div><span><a href="#">Choose Your Cruise</a></span></li>
-                  <li class="text-center"><div class="number"><a href="payment.html">3</a></div><span><a href="#">Place Your Reservation</a></span></li>
-                  <li class="text-center"><div class="number"><a href="complete.html">4</a></div><span><a href="#">Confirmation</a></span></li>
-                </ul>
                   <div class="check bookings-check mt-5 d-flex justify-content-center align-items-center">
                     <form action="" class="w-100 d-flex justify-content-between position-relative align-items-center">
                       <label for="date"><nobr>Please Select Date Of Cruise :</nobr></label>
                       <!-- date picker -->
                       <section class="date-picker-button d-flex justify-content-between align-items-center" id="date">
-                        <nobr><span class="dayNow"> </span> <span class="month" id="month-now">month</span><!--<span class="year">2021</span>--></nobr><i class="mt-1 far fa-calendar-alt"></i>
+                        <nobr><span class="dayNow"> </span> <span class="month" id="month-now">month</span><!--<span class="year">2021</span>--></nobr><i class='mt-1 bx bx-calendar'></i>
                         <!-- inputs -->
                         <!-- Get Day Value -->
                         <input type="text" name="day" id="day" style="display:none!important" value="calc day">
                         <!-- Get Month & Year Value -->
                         <input type="text" name="month-year" id="month-year" style="display:none!important" value="calc month">
                         <!-- / inputs -->
-                      </section>
+                        </section>
                          <!-- Calendar -->
                          <div class="date-picker position-absolute" id="datepicker">
                           <div class="month d-flex justify-content-between align-items-center">
-                            <div class="arrows prev-mth prev"><i class="fas fa-caret-left fa-caret"></i></div>
+                            <div class="arrows prev-mth prev"><i class='fa-caret bx bx-caret-left'></i></i></div>
                             <div class="mth"><span class="calendar-month" style="color: #333;">March</span> <span class="calendar-year">2021</span></div>
-                            <div class="arrows next-mth next"><i class="fas fa-caret-right fa-caret"></i></div>
+                            <div class="arrows next-mth next"><i class='fa-caret bx bx-caret-right'></i></i></div>
                           </div>
                           <div class="week d-flex justify-content-between">
                             <span>Su</span>
